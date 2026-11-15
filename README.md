@@ -161,19 +161,6 @@ There are no opcodes for `!=`, `<=`, and `>=`. The compiler builds them from the
 └── main.lox        # Demo program
 ```
 
-### 3.6 Build and Run
-
-```bash
-# Build
-gcc -std=c99 -O2 -o clox *.c
-
-# Run a Lox script
-./clox main.lox
-
-# Start the interactive REPL
-./clox
-```
-
 | Exit code | Meaning                       |
 |:---------:|-------------------------------|
 | `0`       | Success                       |
@@ -182,7 +169,7 @@ gcc -std=c99 -O2 -o clox *.c
 | `70`      | Runtime error                 |
 | `74`      | Couldn't read the input file  |
 
-### 3.7 Debug Flags
+### 3.6 Debug Flags
 You can switch these on in `common.h`:
 
 | Flag                    | Effect                                                           |
@@ -209,10 +196,15 @@ For example, with `DEBUG_PRINT_CODE` on, `print 1 + 2;` disassembles to:
 
 ## 4. Demo: Compiling and Running `main.lox`
 
-The screenshot below shows clox compiling `main.lox` to bytecode and running it on the VM:
-
+The screenshot below shows clox compiling `main.lox` to bytecode and running it on the VM: \
+### Build:
 ```bash
-./clox main.lox
+cmake -S . -B build        # configure: generate build files in ./build
+cmake --build build        # compile and link
+```
+### Run
+```bash
+./build/clox main.lox      # run
 ```
 
 <!-- Save your screenshot as docs/images/clox-main-lox.png (or change the path below). -->
