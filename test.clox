@@ -3,3 +3,5 @@ var beverage = "cafe au lait";
 breakfast = "beignets with " + beverage;
 
 print breakfast;
+
+print !(1*2 == 3 + 4 - 1);

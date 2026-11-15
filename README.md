@@ -207,9 +207,8 @@ cmake --build build        # compile and link
 ./build/clox main.lox      # run
 ```
 
-<!-- Save your screenshot as docs/images/clox-main-lox.png (or change the path below). -->
 <p align="center">
-  <img src="docs/images/clox-main-lox.png" alt="Terminal output of clox compiling and running main.lox" width="750">
+  <img src="images/jlox-output.png" alt="Terminal output of clox compiling and running main.lox" width="750">
 </p>
 
 <p align="center"><em>clox running <code>main.lox</code> end to end.</em></p>
