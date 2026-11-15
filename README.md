@@ -4,7 +4,7 @@
 
 A complete implementation of **clox**, the single-pass compiler and stack-based bytecode virtual machine for the **Lox** programming language. I wrote it in C from scratch, following Part III of Robert Nystrom's [*Crafting Interpreters*](https://craftinginterpreters.com).
 
-> ✅ **Status: complete.** All chapters of Part III (14–30) are implemented, and `main.lox` compiles and runs end to end.
+> 🔜 **Status: partially completed.** Classes and Garbage Collector are not yet implemented (I will add soon).
 
 ---
 
@@ -120,13 +120,7 @@ The compiler asks the scanner for one token at a time and writes bytecode straig
 ### 3.2 Implementation Highlights
 
 - **Single-pass compilation.** The Pratt parser writes bytecode as it parses, without building an AST. Each token type maps to a prefix rule, an infix rule, and a precedence level.
-- **Stack-based VM.** `run()` reads one instruction at a time and dispatches on it with a `switch`. Each call frame has its own instruction pointer and its own window of slots in the shared value stack, so calling a function needs no extra allocation.
-- **Closures through upvalues.** A captured variable stays on the stack while its enclosing function is running. When it goes out of scope, `OP_CLOSE_UPVALUE` moves it to the heap. Open upvalues sit in a sorted linked list, so closures that capture the same variable share one upvalue.
-- **String interning.** Every string is interned in a hash table, so comparing two strings only needs a pointer comparison.
-- **Garbage collector.** A tracing mark-and-sweep collector starts from these roots: the value stack, the call frames' closures, the open upvalues, the globals table, and any functions still being compiled. The intern table holds its strings weakly. After each collection, the next one is scheduled at twice the size of the live heap.
-- **Error reporting.** Compile errors show the line number and the offending token, and panic mode re-synchronizes so one mistake doesn't cause a cascade of errors. Runtime errors print a full stack trace.
-- **NaN boxing.** Every `Value` fits into a single 64-bit word: real doubles are stored as-is, and everything else is packed into the unused bits of a quiet NaN.
-
+- **Global/local variable scoping.** This part is confusing, but I managed to complete it with a proper understanding of why.
 ### 3.3 Instruction Set
 
 <details>
