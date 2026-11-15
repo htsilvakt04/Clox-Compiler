@@ -20,7 +20,7 @@ A complete implementation of **clox**, the single-pass compiler and stack-based 
 
 ## 1. Introduction
 
-**clox** takes Lox source code, compiles it to compact **bytecode**, and runs that bytecode on a **stack-based virtual machine**. It does all of this in one pass and never builds a syntax tree. That makes it much faster than a tree-walking interpreter. It's the same basic design that CPython, Lua, and the JVM use.
+**clox** takes Lox source code, compiles it to compact **bytecode**, and runs that bytecode on a **stack-based virtual machine**. It does all of this in one pass and never builds a syntax tree. That makes it much faster than a tree-walking interpreter. 
 
 The whole thing is a few thousand lines of dependency-free C99. It covers every part a real language runtime needs:
 
